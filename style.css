@@ -21,7 +21,7 @@ text-decoration: none;
 }
 
 .feh {
-background: url(./bg/bg_00.jpg) no-repeat;
+background: url(./bg/bg_00.jpg), var( --bg-tr );
 background-size: cover;
 }
 
@@ -65,9 +65,16 @@ margin: 0 auto;
 	
 
 	.clock {
+	flex-direction: column;
 	color: var( --fg-a );
+	text-shadow: var( --shd );
 	font-size: 4rem;
+	text-align: center;
 	}
+
+		.js-data {
+		font-size: 2rem;
+		}
 	
 		.col {
 		background: var(--bg2);

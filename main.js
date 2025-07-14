@@ -33,7 +33,6 @@ function renderContent(data) {
 container.innerHTML = html;
 }
 
-renderContent(data);
 
 document.getElementById('google-search').addEventListener('keydown', function (e) {
 	if (e.key === 'Enter') {
@@ -43,3 +42,30 @@ document.getElementById('google-search').addEventListener('keydown', function (e
 		}
 	}
 });
+
+function insertDate() {
+  let now = new Date();
+  let day = String(now.getDate()).padStart(2, '0');
+  let month = String(now.getMonth() + 1).padStart(2, '0');
+  let year = now.getFullYear();
+  let weekdays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+  let weekday = weekdays[now.getDay()];
+  let dateString = `${day}-${month}-${year} (${weekday})`;
+  let element = document.querySelector('.js-data');
+  if (element) {
+    element.textContent = dateString;
+  }
+}
+
+function setRandomBackground() {
+  	let index = Math.floor(Math.random() * 10),
+  		paddedIndex = String(index).padStart(2, '0'),
+  		imageUrl = `bg_${paddedIndex}.jpg`,
+		element = document.querySelector('.feh');
+
+	element.style.backgroundImage = `url('./bg/${imageUrl}')`;
+}
+
+setRandomBackground();
+insertDate();
+renderContent(data);
