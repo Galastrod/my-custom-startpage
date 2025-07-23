@@ -8,30 +8,34 @@ function updateClock() {
 	const seconds = String(now.getSeconds()).padStart(2, '0');
 
 	clockElement.textContent = `${hours}:${minutes}:${seconds}`;
-}
-
-updateClock();
-setInterval(updateClock, 1000);
+};
 
 function renderContent(data) {
-	let container = document.querySelector('.links-js');
-	if (!container) return;
+	let container = document.querySelector('.links-js'),
+		content = "";
 
-	const html = data.map(section => {
-	  const links = section.content.map(item => {
-		return `<a href="${item.href}" target="_blank">${item.name}</a>`;
-	  }).join('<br>');
+	data
+		.forEach( section => {
+		let links = '';
 
-	  return `
-		<div class="col">
-		  <h3 class="cat-name">${section.name}</h3>
-		  ${links}
-		</div>
-	  `;
-}).join('');
 
-container.innerHTML = html;
-}
+		section
+			.content
+			.forEach( link => 
+			{ 
+				links += `<a href="${link.href}" target="_blank">${link.name}</a>`; 
+			} );
+
+		content +=
+			`		
+			<div class="col">
+		  		<h3 class="cat-name">${section.name}</h3>
+		  		${links}
+			</div>`;
+		} );
+
+container.innerHTML = content;
+};
 
 
 document.getElementById('google-search').addEventListener('keydown', function (e) {
@@ -55,7 +59,7 @@ function insertDate() {
   if (element) {
     element.textContent = dateString;
   }
-}
+};
 
 function setRandomBackground() {
   	let index = Math.floor(Math.random() * 10),
@@ -64,8 +68,11 @@ function setRandomBackground() {
 		element = document.querySelector('.feh');
 
 	element.style.backgroundImage = `url('./bg/${imageUrl}')`;
-}
+};
 
+
+updateClock();
+setInterval(updateClock, 1000);
 setRandomBackground();
 insertDate();
 renderContent(data);
