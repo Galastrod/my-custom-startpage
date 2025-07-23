@@ -17,7 +17,7 @@ const data = [
     ]
   },
   {
-    name: "Инструменты",
+    name: "Tools",
     content: [
       {
         name: "GitHub",
@@ -26,19 +26,23 @@ const data = [
       {
         name: "GitLab",
         href: "https://gitlab.com"
+      },
+      {
+        name: "V2ray",
+        href: "http://localhost:2017"
       }
     ]
   },
   {
-    name: "Нейросети",
+    name: "Apps",
     content: [
       {
         name: "ChatGPT",
         href: "https://chat.openai.com"
       },
       {
-        name: "Hugging Face",
-        href: "https://huggingface.co"
+        name: "Youtube",
+        href: "https://www.youtube.com/"
       }
     ]
   }

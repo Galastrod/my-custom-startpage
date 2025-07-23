@@ -11,15 +11,6 @@ transition: .5s;
 text-decoration: none;
 }
 
-:root {
-	--bg: #463d3d;
-	--bg2: #645a5a;
-	--bg-tr: #33333399;
-	--fg: #bba4a4;
-	--fg-a: #c46a65;
-	--shd: #00000066;
-}
-
 .feh {
 background: url(./bg/bg_00.jpg), var( --bg-tr );
 background-size: cover;
