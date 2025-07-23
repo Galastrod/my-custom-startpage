@@ -88,10 +88,3 @@ const schemes = [
     }
   }
 ];
-
-
-const randomScheme = schemes[Math.floor(Math.random() * schemes.length)];
-
-for (let [key, value] of Object.entries(randomScheme.vars)) {
-  document.documentElement.style.setProperty(key, value);
-}

@@ -70,9 +70,70 @@ function setRandomBackground() {
 	element.style.backgroundImage = `url('./bg/${imageUrl}')`;
 };
 
+function setScheme( index ) {
+  if( !index )
+    index = Math.floor(Math.random() * schemes.length);
+
+  let 
+  	scheme = schemes[index],
+  	curent_schem_btn = document.querySelector( '.scheme__btn--active' );
+
+  if( curent_schem_btn )
+	curent_schem_btn.classList.remove( 'scheme__btn--active' );
+
+  document
+  	.getElementById( index )
+	.classList
+	.add( 'scheme__btn--active' );
+
+  for (let [key, value] of Object.entries(scheme.vars)) {
+    document.documentElement.style.setProperty(key, value);
+  }
+};
+
+function schemeModuleRender( schemes )
+{
+	let 
+		plane = document.createElement( 'div' ),
+		html = "";
+
+	schemes
+		.forEach( (item, id) => {
+			html += `<button class="scheme__btn" id="${id}">${ item.name }</button>`
+		} );
+
+	plane.classList.add( 'scheme-plane' );
+	plane.innerHTML = html;
+
+	document
+		.body
+		.append( plane );
+
+	plane
+		.querySelectorAll( 'button' )
+		.forEach( btn => 
+			{
+				btn
+					.addEventListener( 'click', ev => {
+						setScheme( ev.target.id )
+					} )
+			} )
+};
+
+
 
 updateClock();
 setInterval(updateClock, 1000);
 setRandomBackground();
 insertDate();
 renderContent(data);
+schemeModuleRender( schemes );
+setScheme();
+
+
+document.addEventListener('keydown', ev =>
+{
+  if (ev.key === 'Tab') 
+	document.querySelector( '.scheme-plane' ).classList.toggle( 'scheme-plane--active' );
+});
+

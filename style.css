@@ -48,6 +48,38 @@ background-size: cover;
   		clip-path: polygon(185px 0, 100% 0, 100% 100.00%, 236px 100%);
 		}
 
+.scheme-plane {
+position: fixed;
+top: 2rem;
+left: 2rem;
+background: var(--bg);
+width: 15rem;
+height: calc( 100% - 4rem );
+box-shadow: 0 0 .5rem var( --shd );
+border-radius: .2rem;
+transform: translateY( 110% );
+}
+
+	.scheme-plane--active {
+	transform: translateY( 0 );
+	}
+
+	.scheme__btn {
+	display: block;
+	background: var(--bg);
+	color: var(--fg);
+	padding: 1rem 1.5rem;
+	width: 100%;
+	}
+
+	.scheme__btn:hover {
+	background: var( --bg2 );
+	}
+
+	.scheme__btn--active {
+	border-left: .2rem solid var(--fg-a);
+	}
+
 .main {
 display: flex;
 flex-direction: column;
