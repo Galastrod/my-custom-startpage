@@ -21,13 +21,13 @@ function renderContent(data) {
 
 		section
 			.content
-			.forEach( link => 
-			{ 
-				links += `<a href="${link.href}" target="_blank">${link.name}</a>`; 
+			.forEach( link =>
+			{
+				links += `<a href="${link.href}" target="_blank">${link.name}</a>`;
 			} );
 
 		content +=
-			`		
+			`
 			<div class="col">
 		  		<h3 class="cat-name">${section.name}</h3>
 		  		${links}
@@ -37,6 +37,44 @@ function renderContent(data) {
 container.innerHTML = content;
 };
 
+function initDotsSlider() {
+	let
+		dotsContainer = document.querySelector('.slider-dots-js'),
+		cols = document.querySelectorAll('.links-js .col'),
+		totalSteps = cols.length - 3,
+		dotsHtml = '';
+
+	if (cols.length <= 4) {
+		cols.forEach(col => col.classList.add('col-show'));
+		return;
+	};
+
+	for (let i = 0; i < totalSteps; i++) {
+		dotsHtml += `<span class="dot btn" data-index="${i}">${i + 1}</span>`;
+	};
+
+	dotsContainer.innerHTML = dotsHtml;
+
+	const dots = dotsContainer.querySelectorAll('.dot');
+
+	dots.forEach(dot => {
+		dot.addEventListener('click', () => {
+			let targetIndex = parseInt(dot.dataset.index) * 4;
+
+			cols.forEach((col, index) => {
+				if (index >= targetIndex && index < targetIndex + 4) {
+					col.classList.add('col-show');
+				} else {
+					col.classList.remove('col-show');
+				}
+			});
+
+			dots.forEach(d => d.classList.toggle('active', d === dot));
+		});
+	});
+
+	if (dots.length > 0) dots[0].click();
+};
 
 document.getElementById('google-search').addEventListener('keydown', function (e) {
 	if (e.key === 'Enter') {
@@ -99,7 +137,7 @@ function schemeModuleRender( schemes )
 
 	schemes
 		.forEach( (item, id) => {
-			html += `<button class="scheme__btn" id="${id}">${ item.name }</button>`
+			html += `<button class="scheme__btn btn" id="${id}">${ item.name }</button>`
 		} );
 
 	plane.classList.add( 'scheme-plane' );
@@ -127,6 +165,7 @@ setInterval(updateClock, 1000);
 setRandomBackground();
 insertDate();
 renderContent(data);
+initDotsSlider();
 schemeModuleRender( schemes );
 setScheme();
 

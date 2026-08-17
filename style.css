@@ -10,6 +10,7 @@ font-family: roboto;
 transition: .5s;
 text-decoration: none;
 font-size: 16px;
+font-family: Ubuntu, Arial;
 }
 
 h1 { font-size: 2rem; }
@@ -64,16 +65,19 @@ transform: translateY( 110% );
 	transform: translateY( 0 );
 	}
 
-	.scheme__btn {
+	.btn {
 	display: block;
 	background: var(--bg);
 	color: var(--fg);
 	padding: 1rem 1.5rem;
-	width: 100%;
 	}
 
-	.scheme__btn:hover {
+	.btn:hover {
 	background: var( --bg2 );
+	}
+
+	.scheme__btn {
+	width: 100%;
 	}
 
 	.scheme__btn--active {
@@ -89,6 +93,13 @@ width: 1200px;
 height: 100vh;
 margin: 0 auto;
 }
+
+	.box {
+	background: var(--bg);
+	border-radius: .2rem;
+	box-shadow: 0 0 .5rem var( --shd );
+	padding: 2rem;
+	}
 
 	.search {
 	background: var(--bg);
@@ -109,17 +120,10 @@ margin: 0 auto;
 	.clock {
 	display: flex;
 	justify-content: center;
-	padding: 3rem 0;
-	}
-	
-	.row {
-	background: var(--bg);
+	padding: 1rem;
 	width: 100%;
-	border-radius: .2rem;
-	box-shadow: 0 0 .5rem var( --shd );
 	}
 	
-
 	.clock {
 	flex-direction: column;
 	color: var( --fg-a );
@@ -136,11 +140,16 @@ margin: 0 auto;
 		}
 	
 		.col {
+		display: none;
 		background: var(--bg2);
 		border-radius: .2rem;
 		min-width: 15rem;
 		padding: 2rem .5rem;
 		margin: .5rem;
+		}
+
+		.col-show {
+		display: block;
 		}
 		
 				.col:hover {
