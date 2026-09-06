@@ -41,7 +41,7 @@ function initDotsSlider() {
 	let
 		dotsContainer = document.querySelector('.slider-dots-js'),
 		cols = document.querySelectorAll('.links-js .col'),
-		totalSteps = cols.length - 3,
+		totalSteps = Math.ceil( cols.length / 4 ),
 		dotsHtml = '';
 
 	if (cols.length <= 4) {
